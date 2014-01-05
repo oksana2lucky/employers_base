@@ -1,0 +1,82 @@
+<config>
+    <modules>
+        <My_Employee>
+          <version>1.0.0</version>
+        </My_Employee>
+    </modules>
+	<admin>
+	   <routers>
+		   <employee>
+		       <use>admin</use>
+		       <args>
+		           <module>My_Employee</module>
+		           <frontName>adminemployee</frontName>
+		       </args>
+		    </employee>
+	    </routers>
+	 </admin>
+	 <adminhtml>
+	    <layout>
+	       <updates>
+	           <employee>
+	              <file>employee.xml</file>
+	           </employee>
+	       </updates>
+	    </layout>
+	   <menu>
+	      <employee translate="title" module="adminhtml">
+	         <title>Store Employers</title>
+	         <sort_order>100</sort_order>
+	         <children>
+	             <worker>
+	                   <title>Manage Employers</title>
+	                   <action>adminemployee/adminhtml_index</action>
+	             </worker>
+	             <position>
+	                   <title>Manage Positions</title>
+	                   <action>adminemployee/adminhtml_position</action>
+	             </position>
+	          </children>
+	       </employee>
+	    </menu>
+	</adminhtml>
+	<global>
+	     <blocks>
+	         <employee>
+	              <class>My_Employee_Block</class>
+	         </employee>
+	      </blocks>
+	      <models>
+			  <employee>
+			     <class>My_Employee_Model</class>
+			     <resourceModel>employee_mysql4</resourceModel>
+			  </employee>
+			  <employee_mysql4>
+				     <class>My_Employee_Model_Mysql4</class>
+				     <entities>
+				         <position>
+				           <table>employee_positions</table>
+				         </position>
+				         <worker>
+				           <table>employee_workers</table>
+				         </worker>
+				     </entities>
+			   </employee_mysql4>
+		   </models>
+			    <!-- allow the plugin to read and write -->
+			<resources>
+			        <!-- connection to write -->
+			        <employee_write>
+			            <connection>
+			                <use>core_write</use>
+			            </connection>
+			        </employee_write>
+			        <!-- connection to read -->
+			       <employee_read>
+			          <connection>
+			             <use>core_read</use>
+			          </connection>
+			       </employee_read>
+			</resources>
+	</global>
+</config>

@@ -1,0 +1,12 @@
+<layout version="0.1.0">
+      <employee_adminhtml_index_index>
+          <reference name="content">
+      		 <block type="employee/adminhtml_index" name="worker" />
+          </reference>
+      </employee_adminhtml_index_index>
+      <employee_adminhtml_position_index>
+          <reference name="content">
+      		 <block type="employee/adminhtml_position" name="position" />
+          </reference>
+      </employee_adminhtml_position_index>
+</layout>
