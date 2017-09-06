@@ -1,6 +1,13 @@
 <?php
-class My_Employee_Block_Adminhtml_Index_Edit extends Mage_Adminhtml_Block_Widget_Form_Container{
-  
+
+/**
+ * Class My_Employee_Block_Adminhtml_Index_Edit
+ */
+class My_Employee_Block_Adminhtml_Index_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
+{
+    /**
+     * My_Employee_Block_Adminhtml_Index_Edit constructor.
+     */
    public function __construct()
    {
         parent::__construct();
@@ -14,7 +21,12 @@ class My_Employee_Block_Adminhtml_Index_Edit extends Mage_Adminhtml_Block_Widget
         $this->_updateButton('delete', 'label', 'Delete Employee');
 
     }
- 
+
+    /**
+     * Get header text
+     *
+     * @return string
+     */
     public function getHeaderText()
     {
         if( Mage::registry('worker_data') && Mage::registry('worker_data')->getId())

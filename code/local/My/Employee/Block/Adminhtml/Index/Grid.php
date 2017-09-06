@@ -1,6 +1,13 @@
 <?php
+
+/**
+ * Class My_Employee_Block_Adminhtml_Index_Grid
+ */
 class My_Employee_Block_Adminhtml_Index_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
+    /**
+     * My_Employee_Block_Adminhtml_Index_Grid constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -10,6 +17,11 @@ class My_Employee_Block_Adminhtml_Index_Grid extends Mage_Adminhtml_Block_Widget
         $this->setSaveParametersInSession(true);
     }
 
+    /**
+     * Prepare worker collection
+     *
+     * @return mixed
+     */
     protected function _prepareCollection()
     {
         $collection = Mage::getModel('employee/worker')->getCollection();
@@ -17,6 +29,11 @@ class My_Employee_Block_Adminhtml_Index_Grid extends Mage_Adminhtml_Block_Widget
         return parent::_prepareCollection();
     }
 
+    /**
+     * Prepare worker columns
+     *
+     * @return mixed
+     */
     protected function _prepareColumns()
     {
         $this->addColumn('id', array(
@@ -55,6 +72,12 @@ class My_Employee_Block_Adminhtml_Index_Grid extends Mage_Adminhtml_Block_Widget
         return parent::_prepareColumns();
     }
 
+    /**
+     * Get url for entity
+     *
+     * @param Varien_Object $row
+     * @return mixed
+     */
     public function getRowUrl($row)
     {
         return $this->getUrl('*/*/edit', array('id' => $row->getId()));

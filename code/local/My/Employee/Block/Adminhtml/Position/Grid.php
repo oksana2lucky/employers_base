@@ -1,6 +1,13 @@
 <?php
+
+/**
+ * Class My_Employee_Block_Adminhtml_Position_Grid
+ */
 class My_Employee_Block_Adminhtml_Position_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
+    /**
+     * My_Employee_Block_Adminhtml_Position_Grid constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -10,6 +17,11 @@ class My_Employee_Block_Adminhtml_Position_Grid extends Mage_Adminhtml_Block_Wid
         $this->setSaveParametersInSession(true);
     }
 
+    /**
+     * Prepare employee collection
+     *
+     * @return mixed
+     */
     protected function _prepareCollection()
     {
         $collection = Mage::getModel('employee/position')->getCollection();
@@ -17,6 +29,11 @@ class My_Employee_Block_Adminhtml_Position_Grid extends Mage_Adminhtml_Block_Wid
         return parent::_prepareCollection();
     }
 
+    /**
+     * Prepare employee columns
+     *
+     * @return mixed
+     */
     protected function _prepareColumns()
     {
         $this->addColumn('id', array(
@@ -35,6 +52,12 @@ class My_Employee_Block_Adminhtml_Position_Grid extends Mage_Adminhtml_Block_Wid
         return parent::_prepareColumns();
     }
 
+    /**
+     * Get row url
+     *
+     * @param $row
+     * @return mixed
+     */
     public function getRowUrl($row)
     {
         return $this->getUrl('*/*/edit', array('id' => $row->getId()));

@@ -1,19 +1,34 @@
 <?php
+
+/**
+ * Class My_Employee_Adminhtml_IndexController
+ */
 class My_Employee_Adminhtml_IndexController extends Mage_Adminhtml_Controller_Action
 {
-protected function _initAction()
+    /**
+     * Action initialization
+     *
+     * @return $this
+     */
+    protected function _initAction()
     {
         $this->loadLayout()->_setActiveMenu('employee/worker')
                 ->_addBreadcrumb('Employee Manager','Employee Manager');
         return $this;
     }
-      
+
+    /**
+     * Index action
+     */
     public function indexAction()
     {	
          $this->_initAction();
          $this->renderLayout();
     }
-	
+
+    /**
+     * Edit action
+     */
 	public function editAction()
     {
          $thisId = $this->getRequest()->getParam('id');
@@ -40,15 +55,21 @@ protected function _initAction()
                    ->addError('Employee does not exist');
              $this->_redirect('*/*/');
           }
-       }
+    }
 
-   public function newAction()
-   {
-      $this->_forward('edit');
-   }
-   
-   public function saveAction()
-   {
+    /**
+     * New action
+     */
+    public function newAction()
+    {
+        $this->_forward('edit');
+    }
+
+    /**
+     * Save action
+     */
+    public function saveAction()
+    {
          if ($this->getRequest()->getPost())
          {
            try {
@@ -84,10 +105,13 @@ protected function _initAction()
                                                 ->getParam('id')));
                 return;
                 }
-              }
+          }
               $this->_redirect('*/*/');
     }
 
+    /**
+     * Delete action
+     */
     public function deleteAction()
     {
           if($this->getRequest()->getParam('id') > 0)
@@ -110,5 +134,5 @@ protected function _initAction()
               }
          }
         $this->_redirect('*/*/');
-   }
+    }
 }

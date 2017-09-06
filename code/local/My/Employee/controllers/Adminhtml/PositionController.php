@@ -1,19 +1,34 @@
 <?php
+
+/**
+ * Class My_Employee_Adminhtml_PositionController
+ */
 class My_Employee_Adminhtml_PositionController extends Mage_Adminhtml_Controller_Action
 {
+    /**
+     * Action initialization
+     *
+     * @return $this
+     */
     protected function _initAction()
     {
         $this->loadLayout()->_setActiveMenu('employee/position')
                 ->_addBreadcrumb('Employee Manager','Employee Manager');
         return $this;
     }
-      
+
+    /**
+     * Index action
+     */
     public function indexAction()
     {	
          $this->_initAction();
          $this->renderLayout();
     }
-	
+
+    /**
+     * Edit action
+     */
 	public function editAction()
     {
          $thisId = $this->getRequest()->getParam('id');
@@ -40,15 +55,21 @@ class My_Employee_Adminhtml_PositionController extends Mage_Adminhtml_Controller
                    ->addError('Test does not exist');
              $this->_redirect('*/*/');
           }
-       }
-
-   public function newAction()
-   {
-      $this->_forward('edit');
    }
-   
-   public function saveAction()
-   {
+
+    /**
+     * New action
+     */
+    public function newAction()
+    {
+        $this->_forward('edit');
+    }
+
+    /**
+     * Save action
+     */
+    public function saveAction()
+    {
          if ($this->getRequest()->getPost())
          {
            try {
@@ -88,6 +109,9 @@ class My_Employee_Adminhtml_PositionController extends Mage_Adminhtml_Controller
               $this->_redirect('*/*/');
     }
 
+    /**
+     * Delete action
+     */
     public function deleteAction()
     {
           if($this->getRequest()->getParam('id') > 0)
@@ -110,5 +134,5 @@ class My_Employee_Adminhtml_PositionController extends Mage_Adminhtml_Controller
               }
          }
         $this->_redirect('*/*/');
-   }
+    }
 }
